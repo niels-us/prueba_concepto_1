@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+    web:
+        container_name: prueba_concepto_node
+        restart: always
+        build: .
+        ports:
+            - "4000:3000"
+        links:
+            - mongo
+        volumes:
+            - .:/app
+    mongo:
+        container_name: prueba_concepto_mongo
+        image: mongo
+        ports:
+            - "27018:27017"
+        logging:
+            driver: none
